@@ -40,7 +40,7 @@ document.onkeyup = function (event) {
     //wrong guess
     if (chosenWord.indexOf(event.key) === -1) {
         console.log("wrong")
-        
+
         document.getElementById("remainders").innerHTML = "Letters guessed: " + event.key;
         // not found; subtract a guess and continue
     }
@@ -60,13 +60,13 @@ document.onkeyup = function (event) {
             }
         }
         //displaying wrong or correct guess
-        document.getElementById("spaces").innerHTML = answerblanks.join(" "); 
+        document.getElementById("spaces").innerHTML = answerblanks.join(" ");
         if (!answerblanks.includes("_")) {
-            
+
             alert("You Win!")
             startGame()
         }
-    
+
     }
 
     if (guesses === 0) {
