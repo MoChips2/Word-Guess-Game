@@ -8,6 +8,13 @@
         crossorigin="anonymous">
     <title>Word Guess Game</title>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <style>
+    body {
+        margin: 0px auto;
+        background-image: url(./assets/images/img_3.jpg);
+        background-size: cover;
+    }
+    </style>
 </head>
 
 <body>
@@ -21,22 +28,27 @@
         <br><br>
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-right bg-info">
-                    <h4>Press any key to get started!</h4>
+                <div class="col-md-6 text-right bg-success">
+                    <h4 class="text-white">Press any key to get started!</h4>
+                    <br>
                     <div class="col-md-12">
-                        <h5 id="spaces"></h5>
-                </div>
-                    <div class="col-md-12">
-                        <h5 id="guesses"></h5>
+                        <h5 class="text-white" id="spaces"></h5>
                     </div>
+                    <br>
                     <div class="col-md-12">
-                        <h5>Houston, we are clear for lift off</h5>
+                        <h5 class="text-white" id="WinTotal"></h5>
                     </div>
+                    <br>
                     <div class="col-md-12">
-                        <h5>Houston, we are clear for lift off</h5>
+                        <h5 class="text-white" id="guesses"></h5>
                     </div>
+                    <br>
+                    <div class="col-md-12">
+                        <h5 class="text-white" id="remainders"></h5>
+                    </div>
+                    <br>
                     <div class="col-md-12" id>
-                        <h5>Houston, we are clear for lift off</h5>
+                        <h5 class="text-white"></h5>
                     </div>
 
                 </div>

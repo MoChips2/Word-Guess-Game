@@ -1,30 +1,32 @@
-var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
-
-
 var words = [
     "pizza",
     "mozzarella",  // list of answers
     "lasagna",
     "penne",
+    "parmesan",
     "fettuccine",
     "linguine",
     "cannoli",
-    "parmesan",
+    "risotto",
+    "gelato",
+    "calzone",
+    "frittata",
+    "ravioli",
 ]
- //start game
- var chosenWord = ""
+//start game
+var chosenWord = ""
 var answerblanks = [];
-var guesses = 15
+var guesses = 15;
+var counter = 0;
 
 function startGame() {
     chosenWord = words[Math.floor(Math.random() * words.length)];
-    // reset array
-    for (var i = 0; i < chosenWord.length; i++) { 
+    answerblanks = []; // resets array
+    for (var i = 0; i < chosenWord.length; i++) {
         answerblanks[i] = "_";
     }
     guesses = 15
-    document.getElementById("guesses").innerHTML="Remaining guesses: " + guesses;
+    document.getElementById("guesses").innerHTML = "Remaining guesses: " + guesses;
     document.getElementById("spaces").innerHTML = answerblanks.join(" ");
 }
 //document.getElementById("spaces").innerHTML = randomwords;
@@ -33,43 +35,45 @@ function startGame() {
 //user guesses
 document.onkeyup = function (event) {
     guesses = guesses - 1;
-    document.getElementById("guesses").innerHTML="Remaining guesses: " + guesses;
+    document.getElementById("guesses").innerHTML = "Remaining guesses: " + guesses;
 
     //wrong guess
     if (chosenWord.indexOf(event.key) === -1) {
         console.log("wrong")
+        
+        document.getElementById("remainders").innerHTML = "Letters guessed: " + event.key;
         // not found; subtract a guess and continue
-    } 
+    }
     // correct guess
     else {
         console.log("correct")
         var correctGuess = event.key
-    
+
         var chosenWordLetters = chosenWord.split('')
         console.log(chosenWordLetters)
-        for(var i=0; i<chosenWordLetters.length; i++) {
+        for (var i = 0; i < chosenWordLetters.length; i++) {
             console.log("position:", i)
-            if(correctGuess === chosenWordLetters[i]) {
+            if (correctGuess === chosenWordLetters[i]) {
                 console.log(answerblanks)
                 answerblanks[i] = correctGuess
                 console.log(answerblanks)
             }
-        } 
-        document.getElementById("spaces").innerHTML = answerblanks.join(" "); //display of guess
-        if(!answerblanks.includes("_")) {
+        }
+        //displaying wrong or correct guess
+        document.getElementById("spaces").innerHTML = answerblanks.join(" "); 
+        if (!answerblanks.includes("_")) {
+            
             alert("You Win!")
             startGame()
         }
-    }
     
+    }
+
     if (guesses === 0) {
         alert("Game Over!!!")
         startGame()
     }
 
-
-
-    
     // letter found!
     //Add the letter to the word display
     // Subtract a guess
@@ -77,4 +81,9 @@ document.onkeyup = function (event) {
     // 
 
 }
+
+//we need a wintotal counter here
+
+document.getElementById("WinTotal").innerHTML = "Win Total: " + counter;
+//this restarts the game with a new word
 startGame()
